@@ -45,10 +45,14 @@
     <Compile Include="Enums\PersonType.cs" />
     <Compile Include="Enums\RateType.cs" />
     <Compile Include="Enums\PhoneType.cs" />
+    <Compile Include="Interfaces\Repositories\ICarrierPhoneNumberRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IRatingRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ICarrierRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Interfaces\" />
+    <Folder Include="Interfaces\Services\" />
     <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
