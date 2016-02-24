@@ -1,4 +1,5 @@
 ﻿using Application.Interfaces.Services;
+using AutoMapper;
 using System.Web.Mvc;
 
 namespace FreightManagement.Controllers
@@ -7,11 +8,13 @@ namespace FreightManagement.Controllers
     {
         private readonly IAppCarrierService _appCarrierService;
         private readonly IAppRatingService _appRatingService;
+        private readonly IMapper _mapper;
 
-        public RatingController(IAppCarrierService appCarrierService, IAppRatingService appRatingService)
+        public RatingController(IAppCarrierService appCarrierService, IAppRatingService appRatingService, IMapper mapper)
         {
             _appCarrierService = appCarrierService;
             _appRatingService = appRatingService;
+            _mapper = mapper;
         }
 
         // GET: Rating

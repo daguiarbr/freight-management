@@ -2,11 +2,13 @@ using System;
 using System.Web;
 using Application.Interfaces.Services;
 using Application.Services;
+using AutoMapper;
 using Data.Repositories;
 using Domain.Interfaces.Repositories;
 using Domain.Interfaces.Services;
 using Domain.Services;
 using FreightManagement;
+using FreightManagement.AutoMapper;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 using Ninject;
 using Ninject.Web.Common;
@@ -66,6 +68,15 @@ namespace FreightManagement
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            var config = new MapperConfiguration(x =>
+            {
+                x.AddProfile<DomainToViewModelMappingProfile>();
+                x.AddProfile<ViewModelToDomainMappingProfile>();
+            });
+
+            var mapper = config.CreateMapper();
+            kernel.Bind<IMapper>().ToConstant(mapper);
+
             kernel.Bind(typeof(IAppServiceBase<>)).To(typeof(AppServiceBase<>));
             kernel.Bind<IAppCarrierService>().To<AppCarrierService>();
             kernel.Bind<IAppCarrierPhoneNumberService>().To<AppCarrierPhoneNumberService>();

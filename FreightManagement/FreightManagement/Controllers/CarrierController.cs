@@ -1,4 +1,5 @@
 ﻿using Application.Interfaces.Services;
+using AutoMapper;
 using System.Web.Mvc;
 
 namespace FreightManagement.Controllers
@@ -7,11 +8,13 @@ namespace FreightManagement.Controllers
     {
         private readonly IAppCarrierService _appCarrierService;
         private readonly IAppCarrierPhoneNumberService _appCarrierPhoneNumberService;
+        private readonly IMapper _mapper;
 
-        public CarrierController(IAppCarrierService appCarrierService, IAppCarrierPhoneNumberService appCarrierPhoneNumberService)
+        public CarrierController(IAppCarrierService appCarrierService, IAppCarrierPhoneNumberService appCarrierPhoneNumberService, IMapper mapper)
         {
             _appCarrierService = appCarrierService;
             _appCarrierPhoneNumberService = appCarrierPhoneNumberService;
+            _mapper = mapper;
         }
 
         // GET: Carrier
