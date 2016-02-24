@@ -39,7 +39,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Carrier.cs" />
+    <Compile Include="Entities\CarrierPhoneNumber.cs" />
+    <Compile Include="Entities\Rating.cs" />
+    <Compile Include="Enums\PersonType.cs" />
+    <Compile Include="Enums\RateType.cs" />
+    <Compile Include="Enums\PhoneType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
