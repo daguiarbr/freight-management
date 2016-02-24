@@ -39,10 +39,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\Services\IAppServiceBase.cs" />
+    <Compile Include="Interfaces\Services\IAppCarrierPhoneNumberService.cs" />
+    <Compile Include="Interfaces\Services\IAppCarrierService.cs" />
+    <Compile Include="Interfaces\Services\IAppRatingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AppServiceBase.cs" />
+    <Compile Include="Services\AppCarrierService.cs" />
+    <Compile Include="Services\AppCarrierUserPhoneNumberService.cs" />
+    <Compile Include="Services\AppRatingService.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Interfaces\" />
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{09c28a8c-5135-4792-b960-c3947b71d0a9}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
