@@ -4,11 +4,11 @@ using Domain.Interfaces.Services;
 
 namespace Application.Services
 {
-    public class AppCarrierUserPhoneNumberService : AppServiceBase<CarrierPhoneNumber>, IAppCarrierPhoneNumberService
+    public class AppCarrierPhoneNumberService : AppServiceBase<CarrierPhoneNumber>, IAppCarrierPhoneNumberService
     {
         private readonly ICarrierPhoneNumberService _carrierPhoneNumberService;
 
-        public AppCarrierUserPhoneNumberService(ICarrierPhoneNumberService carrierPhoneNumberService)
+        public AppCarrierPhoneNumberService(ICarrierPhoneNumberService carrierPhoneNumberService)
             : base(carrierPhoneNumberService)
         {
             _carrierPhoneNumberService = carrierPhoneNumberService;

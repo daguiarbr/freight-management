@@ -56,7 +56,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CarrierService.cs" />
     <Compile Include="Services\RatingService.cs" />
-    <Compile Include="Services\CarrierUserPhoneNumberService.cs" />
+    <Compile Include="Services\CarrierPhoneNumberService.cs" />
     <Compile Include="Services\ServiceBase.cs" />
   </ItemGroup>
   <ItemGroup />

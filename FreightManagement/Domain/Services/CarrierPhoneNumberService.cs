@@ -4,11 +4,11 @@ using Domain.Interfaces.Services;
 
 namespace Domain.Services
 {
-    public class CarrierUserPhoneNumberService : ServiceBase<CarrierPhoneNumber>, ICarrierPhoneNumberService
+    public class CarrierPhoneNumberService : ServiceBase<CarrierPhoneNumber>, ICarrierPhoneNumberService
     {
         private readonly ICarrierPhoneNumberRepository _carrierPhoneNumberRepository;
 
-        public CarrierUserPhoneNumberService(ICarrierPhoneNumberRepository carrierPhoneNumberRepository)
+        public CarrierPhoneNumberService(ICarrierPhoneNumberRepository carrierPhoneNumberRepository)
             : base(carrierPhoneNumberRepository)
         {
             _carrierPhoneNumberRepository = carrierPhoneNumberRepository;
