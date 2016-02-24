@@ -10,6 +10,9 @@ namespace Domain.Entities
         public int CarrierId { get; set; }
         public virtual Carrier Carrier { get; set; }
 
+        public string UserId { get; set; }
+        public virtual User User { get; set; }
+
         public RateType Rate { get; set; }
 
         public string Message { get; set; }

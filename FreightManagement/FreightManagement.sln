@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{07D3C59A-BD6A-4263-A8CA-4347D0C45FCB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreightManagement", "FreightManagement\FreightManagement.csproj", "{FF4EFC32-7B4C-4CBF-8F49-5C18F1C922E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreightManagement", "FreightManagement\FreightManagement.csproj", "{46A61352-B1F5-493C-AD64-70B29231DEBD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{07D3C59A-BD6A-4263-A8CA-4347D0C45FCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07D3C59A-BD6A-4263-A8CA-4347D0C45FCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07D3C59A-BD6A-4263-A8CA-4347D0C45FCB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FF4EFC32-7B4C-4CBF-8F49-5C18F1C922E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FF4EFC32-7B4C-4CBF-8F49-5C18F1C922E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FF4EFC32-7B4C-4CBF-8F49-5C18F1C922E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FF4EFC32-7B4C-4CBF-8F49-5C18F1C922E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46A61352-B1F5-493C-AD64-70B29231DEBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46A61352-B1F5-493C-AD64-70B29231DEBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46A61352-B1F5-493C-AD64-70B29231DEBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46A61352-B1F5-493C-AD64-70B29231DEBD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

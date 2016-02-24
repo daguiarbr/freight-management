@@ -3,15 +3,19 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Data.EntityConfig
 {
-    public class RatingLinkConfiguration : EntityTypeConfiguration<Rating>
+    public class RatingConfiguration : EntityTypeConfiguration<Rating>
     {
-        public RatingLinkConfiguration()
+        public RatingConfiguration()
         {
             // Primary Key
             HasKey(t => t.Id);
 
             // Properties
             Property(t => t.CarrierId);
+
+            // Properties
+            Property(t => t.UserId)
+                .HasMaxLength(128);
 
             Property(t => t.Rate)
                 .IsRequired();
@@ -22,7 +26,11 @@ namespace Data.EntityConfig
             // Relationships
             HasRequired(t => t.Carrier)
                 .WithMany(t => t.Ratings)
-                .HasForeignKey(d => d.CarrierId);            
+                .HasForeignKey(d => d.CarrierId);
+
+            HasRequired(t => t.User)
+                .WithMany(t => t.Ratings)
+                .HasForeignKey(d => d.UserId);
         }
     }
 }

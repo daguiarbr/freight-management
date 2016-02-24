@@ -1,5 +1,3 @@
-using System;
-using System.Web;
 using Application.Interfaces.Services;
 using Application.Services;
 using AutoMapper;
@@ -12,6 +10,8 @@ using FreightManagement.AutoMapper;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 using Ninject;
 using Ninject.Web.Common;
+using System;
+using System.Web;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(NinjectWebCommon), "Stop")]
@@ -90,7 +90,6 @@ namespace FreightManagement
             kernel.Bind<ICarrierRepository>().To<CarrierRepository>();
             kernel.Bind<ICarrierPhoneNumberRepository>().To<CarrierPhoneNumberRepository>();
             kernel.Bind<IRatingRepository>().To<RatingRepository>();
-
         }        
     }
 }
