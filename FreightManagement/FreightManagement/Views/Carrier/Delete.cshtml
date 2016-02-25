@@ -6,8 +6,7 @@
 
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">@ViewBag.Title</h3>
-        <p>Tem certeza de que deseja remover esta transportadora ?</p>
+        <h3 class="box-title">Tem certeza de que deseja remover esta transportadora?</h3>
     </div>
 
     <div class="box-body">
@@ -18,9 +17,7 @@
                     @Html.DisplayFor(model => model.CompanyName)
                 </div>
             </div>
-        </div>
 
-        <div class="row">
             <div class="col-md-6">
                 <div class="form-group-sm">
                     @Html.LabelFor(model => model.TradingName, new { @class = "control-label" })
@@ -30,14 +27,14 @@
         </div>
 
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-6">
                 <div class="form-group-sm">
                     @Html.LabelFor(model => model.Cnpj, new { @class = "control-label" })
                     @Html.DisplayFor(model => model.Cnpj)
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-6">
                 <div class="form-group-sm">
                     @Html.LabelFor(model => model.Ie, new { @class = "control-label" })
                     @Html.DisplayFor(model => model.Ie)
@@ -58,16 +55,7 @@
             <div class="col-md-6">
                 <div class="form-group-sm">
                     @Html.LabelFor(model => model.Address, new { @class = "control-label" })
-                    @Html.DisplayFor(model => model.Address)
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-2">
-                <div class="form-group-sm">
-                    @Html.LabelFor(model => model.Number, new { @class = "control-label" })
-                    @Html.DisplayFor(model => model.Number)
+                    @Html.DisplayFor(model => model.Address), @Html.DisplayFor(model => model.Number)
                 </div>
             </div>
 
@@ -87,44 +75,33 @@
                 </div>
             </div>
 
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <div class="form-group-sm">
                     @Html.LabelFor(model => model.Cep, new { @class = "control-label" })
                     @Html.DisplayFor(model => model.Cep, new { htmlAttributes = new { @class = "form-control", @mask = "99999-999" } })
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-3">
-                <div class="form-group-sm">
-                    @Html.LabelFor(model => model.State, new { @class = "control-label" })
-                    @Html.DisplayFor(model => model.State)
                 </div>
             </div>
 
             <div class="col-md-3">
                 <div class="form-group-sm">
                     @Html.LabelFor(model => model.City, new { @class = "control-label" })
-                    @Html.DisplayFor(model => model.City)
+                    @Html.DisplayFor(model => model.City) / @Html.DisplayFor(model => model.State)
                 </div>
             </div>
         </div>
-
-
     </div>
 
     <div class="box-footer">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <a href="/Encontrar-Transportadora" class="btn btn-default">Voltar para listagem</a>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-6">
                 @using (Html.BeginForm())
                 {
                     @Html.AntiForgeryToken()
-                    <input type="submit" value="Remover" class="btn btn-save" />
+                    <input type="submit" value="Remover" class="btn btn-save pull-right" />
                 }
             </div>
         </div>

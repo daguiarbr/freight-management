@@ -1,10 +1,16 @@
-﻿namespace FreightManagement.Enums
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FreightManagement.Enums
 {
     public enum PhoneType
     {
-        Commercial = 0, //Comercial
-        Fax = 1, //Fax
-        Mobile = 2, //Celular
-        Other = 3, //Outros
+        [Display(Name = @"Comercial")]
+        Commercial = 0,
+        [Display(Name = @"Fax")]
+        Fax = 1,
+        [Display(Name = @"Celular")]
+        Mobile = 2,
+        [Display(Name = @"Outros")]
+        Other = 3
     }
 }

@@ -6,7 +6,7 @@
 
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">@ViewBag.Title</h3>
+        <h3 class="box-title">@ViewBag.Title:</h3>
     </div>
 
     <div class="box-body">
@@ -17,9 +17,7 @@
                     @Html.DisplayFor(model => model.CompanyName)
                 </div>
             </div>
-        </div>
 
-        <div class="row">
             <div class="col-md-6">
                 <div class="form-group-sm">
                     @Html.LabelFor(model => model.TradingName, new { @class = "control-label" })
@@ -29,14 +27,14 @@
         </div>
 
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-6">
                 <div class="form-group-sm">
                     @Html.LabelFor(model => model.Cnpj, new { @class = "control-label" })
                     @Html.DisplayFor(model => model.Cnpj)
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-6">
                 <div class="form-group-sm">
                     @Html.LabelFor(model => model.Ie, new { @class = "control-label" })
                     @Html.DisplayFor(model => model.Ie)
@@ -57,16 +55,7 @@
             <div class="col-md-6">
                 <div class="form-group-sm">
                     @Html.LabelFor(model => model.Address, new { @class = "control-label" })
-                    @Html.DisplayFor(model => model.Address)
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-2">
-                <div class="form-group-sm">
-                    @Html.LabelFor(model => model.Number, new { @class = "control-label" })
-                    @Html.DisplayFor(model => model.Number)
+                    @Html.DisplayFor(model => model.Address), @Html.DisplayFor(model => model.Number)
                 </div>
             </div>
 
@@ -86,43 +75,88 @@
                 </div>
             </div>
 
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <div class="form-group-sm">
                     @Html.LabelFor(model => model.Cep, new { @class = "control-label" })
                     @Html.DisplayFor(model => model.Cep, new { htmlAttributes = new { @class = "form-control", @mask = "99999-999" } })
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-3">
-                <div class="form-group-sm">
-                    @Html.LabelFor(model => model.State, new { @class = "control-label" })
-                    @Html.DisplayFor(model => model.State)
                 </div>
             </div>
 
             <div class="col-md-3">
                 <div class="form-group-sm">
                     @Html.LabelFor(model => model.City, new { @class = "control-label" })
-                    @Html.DisplayFor(model => model.City)
+                    @Html.DisplayFor(model => model.City) / @Html.DisplayFor(model => model.State)
                 </div>
             </div>
         </div>
-
-
     </div>
 
-    <div class="box-footer">
-        <div class="row">
-            <div class="col-md-4">
-                <a href="/Encontrar-Transportadora" class="btn btn-default">Voltar para listagem</a>
+    <div class="box-footer"></div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Telefones:</h3>
             </div>
 
-            <div class="col-md-4">
-                <a href="/Editar-Transportadora?id=@Model.Id" class="btn btn-save">Editar</a>
+            <div class="box-body">
+                @if (Model.CarrierPhoneNumbers.Any())
+                {
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CarrierPhoneNumbers.FirstOrDefault().PhoneType)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CarrierPhoneNumbers.FirstOrDefault().PhoneNumber)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CarrierPhoneNumbers.FirstOrDefault().CreateDate)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var itemPhoneNumber in Model.CarrierPhoneNumbers)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => itemPhoneNumber.PhoneType)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(model => itemPhoneNumber.PhoneNumber)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => itemPhoneNumber.CreateDate)
+                                    </td>
+                                    <td>
+                                        <a href="/Editar-Telefone?id=@itemPhoneNumber.Id" class="btn-img">
+                                            <img src="/Images/editar.png" alt="Editar" title="Editar" />
+                                        </a>
+
+                                        <a href="/Remover-Telefone?id=@itemPhoneNumber.Id" class="btn-img">
+                                            <img src="/Images/remover.png" alt="Remover" title="Remover" />
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+            </div>
+            <div class="box-footer">
+                <div class="row">
+                    <div class="col-md-6">
+                        <a href="/Encontrar-Transportadora" class="btn btn-default">Voltar para listagem</a>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="/Cadastrar-Telefone?CarrierId=@Model.Id" class="btn btn-save pull-right">Cadastrar Telefone</a>
+                    </div>
+                </div>
             </div>
         </div>
-
     </div>
 </div>

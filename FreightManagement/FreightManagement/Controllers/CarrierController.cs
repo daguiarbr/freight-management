@@ -4,7 +4,6 @@ using Domain.Entities;
 using FreightManagement.ViewModels;
 using System.Collections.Generic;
 using System.Web.Mvc;
-using Microsoft.Ajax.Utilities;
 
 namespace FreightManagement.Controllers
 {
@@ -12,13 +11,11 @@ namespace FreightManagement.Controllers
     public class CarrierController : Controller
     {
         private readonly IAppCarrierService _appCarrier;
-        private readonly IAppCarrierPhoneNumberService _appCarrierPhoneNumber;
         private readonly IMapper _mapper;
 
-        public CarrierController(IAppCarrierService appCarrier, IAppCarrierPhoneNumberService appCarrierPhoneNumber, IMapper mapper)
+        public CarrierController(IAppCarrierService appCarrier, IMapper mapper)
         {
             _appCarrier = appCarrier;
-            _appCarrierPhoneNumber = appCarrierPhoneNumber;
             _mapper = mapper;
         }
 

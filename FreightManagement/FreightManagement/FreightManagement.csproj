@@ -183,11 +183,11 @@
     <Compile Include="AutoMapper\DomainToViewModelMappingProfile.cs" />
     <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CarrierPhoneNumberController.cs" />
     <Compile Include="Controllers\CarrierController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="Enums\BrazilianStates.cs" />
-    <Compile Include="Enums\PersonType.cs" />
     <Compile Include="Enums\PhoneType.cs" />
     <Compile Include="Enums\RateType.cs" />
     <Compile Include="Global.asax.cs">
@@ -266,6 +266,10 @@
     <Content Include="Views\Carrier\Edit.cshtml" />
     <Content Include="Views\Carrier\Delete.cshtml" />
     <Content Include="Views\Carrier\Details.cshtml" />
+    <Content Include="Views\CarrierPhoneNumber\_FormPartial.cshtml" />
+    <Content Include="Views\CarrierPhoneNumber\Create.cshtml" />
+    <Content Include="Views\CarrierPhoneNumber\Delete.cshtml" />
+    <Content Include="Views\CarrierPhoneNumber\Edit.cshtml" />
     <None Include="Views\Carrier\_SearchFormPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
