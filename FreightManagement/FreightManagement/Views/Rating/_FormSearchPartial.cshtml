@@ -12,7 +12,13 @@
     <div class="col-md-3">
         <div class="form-group-sm">
             <label class="control-label">Classificação</label>
-            @Html.EnumDropDownListFor(model => model.RateType, new { @class = "form-control" })
+            @Html.DropDownList("RateType", new List<SelectListItem>
+             {
+                new SelectListItem{ Text="Todas", Value = "" },
+                new SelectListItem{ Text="Ruim ou Péssima", Value = "0" },
+                new SelectListItem{ Text="Não tenho certeza", Value = "1" },
+                new SelectListItem{ Text="Boa ou Ótima", Value = "2" }
+             }, new { @class = "form-control" })
         </div>
     </div>
 

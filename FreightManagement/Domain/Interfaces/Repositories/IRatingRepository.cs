@@ -5,6 +5,6 @@ namespace Domain.Interfaces.Repositories
 {
     public interface IRatingRepository : IRepositoryBase<Rating>
     {
-        IEnumerable<Rating> GetByFilter(string companyName, int rate);
+        IEnumerable<Rating> GetByFilter(string companyName, int? rate);
     }
 }

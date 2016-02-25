@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using Application.Interfaces.Services;
 using AutoMapper;
 using Domain.Entities;
@@ -29,8 +30,8 @@ namespace FreightManagement.Controllers
         [Route("Encontrar-Classificacao", Name = "RatingIndex")]
         public ActionResult Index(RatingSearchViewModel filters)
         {
-            var rate = Convert.ToInt32(filters.RateType);
-            var ratingViewModel = _mapper.Map<IEnumerable<Rating>, IEnumerable<RatingViewModel>>(_appRating.GetByFilter(filters.CompanyName, rate));
+            var rating = _appRating.GetByFilter(filters.CompanyName, filters.RateType);
+            var ratingViewModel = _mapper.Map<IEnumerable<Rating>, IEnumerable<RatingViewModel>>(rating);
             return View(ratingViewModel);
         }
 
@@ -45,7 +46,7 @@ namespace FreightManagement.Controllers
         [Route("Cadastrar-Classificacao", Name = "RatingCreate")]
         public ActionResult Create()
         {
-            ViewBag.CarrierId = new SelectList(_appCarrier.GetAll(), "Id", "CompanyName"); //recuperar todos menos o que eu ja avaliei
+            ViewBag.CarrierId = new SelectList(_appCarrier.GetAll(), "Id", "CompanyName");
             var user = _appUser.GetByStringId(User.Identity.GetUserId());
             var userViewModel = _mapper.Map<User, UserViewModel>(user);
 
@@ -123,14 +124,22 @@ namespace FreightManagement.Controllers
         [ChildActionOnly]
         public PartialViewResult GetFormSearch()
         {
-            var rate = Request.Params["RateType"];
             var vm = new RatingSearchViewModel
             {
                 CompanyName = Request.Params["CompanyName"],
-                RateType = (rate == null) ? RateType.Negative : (RateType)Enum.ToObject(typeof(RateType), rate)
+                RateType = (!string.IsNullOrEmpty(Request.Params["RateType"])) ? Convert.ToInt32(Request.Params["RateType"]) : (int?)null
             };
 
             return PartialView("_FormSearchPartial", vm);
+        }
+
+        public static string Description(Enum value)
+        {
+            var enumType = value.GetType();
+            var field = enumType.GetField(value.ToString());
+            var attributes = field.GetCustomAttributes(typeof(DescriptionAttribute), false);
+
+            return attributes.Length == 0 ? value.ToString() : ((DescriptionAttribute)attributes[0]).Description;
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Domain.Services
             _ratingRepository = ratingRepository;
         }
 
-        public IEnumerable<Rating> GetByFilter(string companyName, int rate)
+        public IEnumerable<Rating> GetByFilter(string companyName, int? rate)
         {
             return _ratingRepository.GetByFilter(companyName, rate);
         }

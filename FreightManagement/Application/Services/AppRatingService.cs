@@ -15,7 +15,7 @@ namespace Application.Services
             _ratingService = ratingService;
         }
 
-        public IEnumerable<Rating> GetByFilter(string companyName, int rate)
+        public IEnumerable<Rating> GetByFilter(string companyName, int? rate)
         {
             return _ratingService.GetByFilter(companyName, rate);
         }

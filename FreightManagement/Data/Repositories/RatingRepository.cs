@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Domain.Entities;
 using Domain.Interfaces.Repositories;
@@ -8,7 +9,7 @@ namespace Data.Repositories
 {
     public class RatingRepository : RepositoryBase<Rating>, IRatingRepository
     {
-        public IEnumerable<Rating> GetByFilter(string companyName, int rate)
+        public IEnumerable<Rating> GetByFilter(string companyName, int? rate)
         {
             var condition = PredicateBuilder.True<Rating>();
             if (!string.IsNullOrEmpty(companyName))
@@ -16,9 +17,10 @@ namespace Data.Repositories
                 condition = condition.And(m => m.Carrier.CompanyName.ToLower().Contains(companyName.ToLower()));
             }
 
-            if (rate > 0)
+            if (rate!= null)
             {
-                condition = condition.And(m => m.RateType.Equals(rate));
+                var rateType = Convert.ToInt32(rate);
+                condition = condition.And(m => m.RateType.Equals(rateType));
             }
 
             return Db.Ratings.AsExpandable().Where(condition);

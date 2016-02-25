@@ -1,4 +1,5 @@
-﻿@model FreightManagement.ViewModels.RatingViewModel
+﻿@using FreightManagement.Enums
+@model FreightManagement.ViewModels.RatingViewModel
 
 @using (Html.BeginForm())
 {
@@ -14,45 +15,64 @@
     <div class="box-body">
         <div class="row">
             <div class="col-md-6">
-                <div class="form-group-sm">
-                    @Html.LabelFor(model => model.CarrierId, new { @class = "control-label" })
-                    @Html.DropDownList("CarrierId", String.Empty)
-                    @Html.ValidationMessageFor(model => model.CarrierId, "", new { @class = "text-danger" })
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group-sm">
+                            @Html.LabelFor(model => model.CarrierId, new { @class = "control-label" })
+                            @Html.DropDownList("CarrierId", null, String.Empty, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CarrierId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group-sm">
+                            <label class="control-label">
+                                Divida a sua opinião sobre esta transportadora
+                            </label>
+                            @Html.TextAreaFor(model => model.Message, new { @class = "form-control", @rows = 10 })
+                            @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row">
             <div class="col-md-6">
                 <div class="form-group-sm">
-                    <label class="control-label">
+                    <h3>
                         Como você classifica esta transportadora?
-                    </label>
-                    @Html.EnumDropDownListFor(model => model.RateType, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.RateType, "", new { @class = "text-danger" })
+                    </h3>
+
+                    <div class="checkbox ">
+                        <label>
+                            @Html.RadioButtonFor(model => model.RateType, RateType.Negative, (Model == null || (Model != null && Model.RateType.Equals(RateType.Negative))) ? (new { @checked = "checked" }) : null)
+                            Ruim ou Péssima
+                        </label>
+                    </div>
+
+                    <div class="checkbox ">
+                        <label>
+                            @Html.RadioButtonFor(model => model.RateType, RateType.Impartial, (Model != null && Model.RateType.Equals(RateType.Impartial)) ? (new { @checked = "checked" }) : null)
+                            Não tenho certeza
+                        </label>
+                    </div>
+
+                    <div class="checkbox ">
+                        <label>
+                            @Html.RadioButtonFor(model => model.RateType, RateType.Positive, (Model == null || (Model != null && Model.RateType.Equals(RateType.Positive))) ? (new { @checked = "checked" }) : null)
+                            Boa ou Ótima
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group-sm">
-                    <label class="control-label">
-                        Divida a sua opinião sobre esta transportadora
-                    </label>
-                    @Html.TextAreaFor(model => model.Message, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-
     </div>
 
     <div class="box-footer">
         <div class="row">
             <div class="col-md-5">
-                <a href="/Encontrar-Transportadora" class="btn btn-default">Voltar para listagem</a>
+                <a href="/Encontrar-Classificacao" class="btn btn-default">Voltar para listagem</a>
             </div>
 
             <div class="col-md-5">

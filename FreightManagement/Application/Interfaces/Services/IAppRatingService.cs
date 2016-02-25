@@ -5,6 +5,6 @@ namespace Application.Interfaces.Services
 {
     public interface IAppRatingService : IAppServiceBase<Rating>
     {
-        IEnumerable<Rating> GetByFilter(string companyName, int rate);
+        IEnumerable<Rating> GetByFilter(string companyName, int? rate);
     }
 }

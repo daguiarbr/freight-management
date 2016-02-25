@@ -1,4 +1,5 @@
-﻿@model IEnumerable<FreightManagement.ViewModels.RatingViewModel>
+﻿@using FreightManagement.Enums
+@model IEnumerable<FreightManagement.ViewModels.RatingViewModel>
 
 @{
     ViewBag.Title = "Listagem de Classificações";
@@ -39,16 +40,12 @@
                             @Html.DisplayFor(modelItem => item.Carrier.CompanyName)
                         </td>
                         <td>
-                            @Html.DisplayFor(model => item.RateType)
+                            @Html.DisplayFor(modelItem => item.RateType)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.CreateDate)
                         </td>
                         <td>
-                            <a href="/Classificacao?id=@item.Id">
-                                <img src="/Images/ver-detalhes.png" alt="Ver detalhes" title="Ver detalhes" />
-                            </a>
-
                             <a href="/Editar-Classificacao?id=@item.Id" class="btn-img">
                                 <img src="/Images/editar.png" alt="Editar" title="Editar" />
                             </a>

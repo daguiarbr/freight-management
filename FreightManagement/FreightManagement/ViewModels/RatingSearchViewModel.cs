@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using FreightManagement.Enums;
 
 namespace FreightManagement.ViewModels
 {
@@ -9,6 +8,6 @@ namespace FreightManagement.ViewModels
         public string CompanyName { get; set; }
 
         [Display(Name = "Classificação:")]
-        public RateType RateType { get; set; }
+        public int? RateType { get; set; }
     }
 }

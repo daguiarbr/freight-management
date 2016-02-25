@@ -4,11 +4,11 @@ namespace FreightManagement.Enums
 {
     public enum RateType
     {
-        [Display(Name = @"Negativa")]
+        [Display(Name = @"Ruim ou Péssima")]
         Negative = 0,
-        [Display(Name = @"Neutra")]
+        [Display(Name = @"Não tenho certeza")]
         Impartial = 1,
-        [Display(Name = @"Positiva")]
+        [Display(Name = @"Boa ou Ótima")]
         Positive = 2,
     }
 }
