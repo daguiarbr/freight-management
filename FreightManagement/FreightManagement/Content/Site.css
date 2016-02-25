@@ -4,6 +4,7 @@
 }
 
 .body-content {
+    margin-top: 15px;
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -23,26 +24,119 @@ textarea {
     border-color: #8bb59b;
 }
 
-.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+        border-color: #8bb59b;
+    }
+
+    .navbar-inverse .navbar-brand {
+        color: #ffffff;
+    }
+
+    .navbar-inverse .navbar-nav > li > a {
+        color: #ffffff;
+    }
+
+.btn-save {
+    color: #ffffff;
+    background-color: #f1654d;
+    border-color: #f45f45;
+}
+
+    .btn-save:hover {
+        color: #ffffff;
+        background-color: #f1654d;
+        border-color: #f45f45;
+    }
+
+.btn-search {
+    color: #ffffff;
+    background-color: #8bb59b;
     border-color: #8bb59b;
 }
 
-.navbar-inverse .navbar-brand {
-    color: #ffffff;
+    .btn-search:hover {
+        color: #ffffff;
+        background-color: #8bb59b;
+        border-color: #8bb59b;
+    }
+
+.btn-default:hover {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
 }
 
-.navbar-inverse .navbar-nav > li > a {
-    color: #ffffff;
+.box {
+    position: relative;
+    border-radius: 3px;
+    background: #ffffff;
+    border-top: 3px solid #239569;
+    margin-bottom: 20px;
+    width: 100%;
+    min-height: 450px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-.btn-info {
-    color: #ffffff;
-    background-color: #f1654d;
-    border-color: #f45f45;
+    .box .box-primary {
+        border-top-color: #8bb59b;
+    }
+
+.box-header {
+    color: #444;
+    display: block;
+    padding: 10px;
+    position: relative;
 }
 
-.btn-info:hover {
-    color: #ffffff;
-    background-color: #f1654d;
-    border-color: #f45f45;
+    .box-header.with-border {
+        margin-bottom: 10px;
+    }
+
+.collapsed-box .box-header.with-border {
+    border-bottom: none;
+}
+
+.box-header > .glyphicon,
+.box-header .box-title {
+    display: inline-block;
+    font-size: 18px;
+    margin: 0;
+    line-height: 1;
+}
+
+.box-header > .glyphicon {
+    margin-right: 5px;
+}
+
+.box-body {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding: 10px;
+}
+
+.no-header .box-body {
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+}
+
+.box-body > .table {
+    margin-bottom: 0;
+}
+
+.box-quantity {
+    padding: 10px 0 10px 0;
+}
+
+.box-footer {
+    padding: 10px;
+}
+
+td a:hover {
+    text-decoration: none;
+}
+
+.btn-img {
+    margin-left: 15px;
 }

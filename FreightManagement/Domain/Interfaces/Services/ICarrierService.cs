@@ -5,6 +5,6 @@ namespace Domain.Interfaces.Services
 {
     public interface ICarrierService : IServiceBase<Carrier>
     {
-        IEnumerable<Carrier> GetByCompanyName(string companyName);
+        IEnumerable<Carrier> Search(string companyName, string cnpj);
     }
 }

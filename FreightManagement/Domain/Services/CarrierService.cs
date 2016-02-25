@@ -15,9 +15,9 @@ namespace Domain.Services
             _carrierRepository = carrierRepository;
         }
 
-        public IEnumerable<Carrier> GetByCompanyName(string companyName)
+        public IEnumerable<Carrier> Search(string companyName, string cnpj)
         {
-            return _carrierRepository.GetByCompanyName(companyName);
+            return _carrierRepository.Search(companyName, cnpj);
         }
     }
 }

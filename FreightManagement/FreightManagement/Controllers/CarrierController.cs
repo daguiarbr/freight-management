@@ -4,6 +4,7 @@ using Domain.Entities;
 using FreightManagement.ViewModels;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 
 namespace FreightManagement.Controllers
 {
@@ -22,9 +23,9 @@ namespace FreightManagement.Controllers
         }
 
         [Route("Encontrar-Transportadora", Name = "CarrierIndex")]
-        public ActionResult Index()
+        public ActionResult Index(CarrierSearchViewModel filters)
         {
-            var carrierViewModel = _mapper.Map<IEnumerable<Carrier>, IEnumerable<CarrierViewModel>>(_appCarrier.GetAll());
+            var carrierViewModel = _mapper.Map<IEnumerable<Carrier>, IEnumerable<CarrierViewModel>>(_appCarrier.Search(filters.CompanyName, filters.Cnpj));
             return View(carrierViewModel);
         }
 
@@ -101,6 +102,18 @@ namespace FreightManagement.Controllers
             _appCarrier.Remove(carrier);
 
             return RedirectToAction("Index");
+        }
+
+        [ChildActionOnly]
+        public PartialViewResult GetSearchForm()
+        {
+            var vm = new CarrierSearchViewModel
+            {
+                CompanyName = Request.Params["CompanyName"],
+                Cnpj = Request.Params["Cnpj"]
+            };
+
+            return PartialView("_SearchFormPartial", vm);
         }
     }
 }

@@ -1,0 +1,25 @@
+﻿@model FreightManagement.ViewModels.CarrierSearchViewModel
+
+@using (Html.BeginRouteForm("CarrierIndex", new { controller = "Carrier", action = "Index" }, FormMethod.Get))
+{
+    <div class=" col-md-3">
+        <div class="form-group-sm">
+            <label class="control-label" for="CompanyName">Razão Social</label>
+            @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group-sm">
+            <label class="control-label" for="Cnpj">CNPJ</label>
+            @Html.EditorFor(model => model.Cnpj, new { htmlAttributes = new { @class = "form-control", @mask = "99.999.999/9999-99", @autocomplete = "off" } })
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group-sm">
+            <button style="margin-top: 24px;" type="submit" class="btn btn-search">Pesquisar</button>
+            <a href="/Encontrar-Transportadora" style="margin-top: 24px;" class="btn btn-default">Limpar</a>
+        </div>
+    </div>
+}

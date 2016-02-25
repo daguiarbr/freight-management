@@ -5,6 +5,6 @@ namespace Application.Interfaces.Services
 {
     public interface IAppCarrierService : IAppServiceBase<Carrier>
     {
-        IEnumerable<Carrier> GetByCompanyName(string companyName);
+        IEnumerable<Carrier> Search(string companyName, string cnpj);
     }
 }

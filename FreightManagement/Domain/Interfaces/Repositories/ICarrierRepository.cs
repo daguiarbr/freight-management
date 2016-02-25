@@ -5,6 +5,6 @@ namespace Domain.Interfaces.Repositories
 {
     public interface ICarrierRepository : IRepositoryBase<Carrier>
     {
-        IEnumerable<Carrier> GetByCompanyName(string companyName);
+        IEnumerable<Carrier> Search(string companyName, string cnpj);
     }
 }
