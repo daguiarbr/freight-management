@@ -11,9 +11,6 @@ namespace Data.EntityConfig
             HasKey(t => t.Id);
 
             // Properties
-            Property(t => t.PersonType)
-                .IsRequired();
-
             Property(t => t.CompanyName)
                 .IsRequired()
                 .HasMaxLength(150);
@@ -21,12 +18,12 @@ namespace Data.EntityConfig
             Property(t => t.TradingName)
                 .IsRequired();
 
-            Property(t => t.CpfCnpj)
+            Property(t => t.Cnpj)
                 .IsRequired()
-                .HasMaxLength(14);
+                .HasMaxLength(18);
 
-            Property(t => t.RgIe)
-                .HasMaxLength(12);
+            Property(t => t.Ie)
+                .HasMaxLength(20);
 
             Property(t => t.Email)
                 .HasMaxLength(256);
@@ -48,15 +45,13 @@ namespace Data.EntityConfig
 
             Property(t => t.Cep)
                 .IsRequired()
-                .HasMaxLength(8);
+                .HasMaxLength(9);
 
             Property(t => t.City)
                 .HasMaxLength(100);
 
             Property(t => t.State)
-                .HasColumnType("char")
-                .IsFixedLength()
-                .HasMaxLength(2);
+                .IsRequired();
         }
     }
 }

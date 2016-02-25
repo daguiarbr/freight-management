@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Domain.Enums;
 
 namespace Domain.Entities
 {
@@ -8,15 +7,13 @@ namespace Domain.Entities
     {
         public int Id { get; set; }
 
-        public PersonType PersonType { get; set; }
-
         public string CompanyName { get; set; }
 
         public string TradingName { get; set; }
 
-        public string CpfCnpj { get; set; }
+        public string Cnpj { get; set; }
 
-        public string RgIe { get; set; }
+        public string Ie { get; set; }
 
         public string Email { get; set; }
 
@@ -30,7 +27,7 @@ namespace Domain.Entities
 
         public string Cep { get; set; }
 
-        public string State { get; set; }
+        public int State { get; set; }
 
         public string City { get; set; }
 

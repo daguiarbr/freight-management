@@ -1,5 +1,4 @@
 ﻿using System;
-using Domain.Enums;
 
 namespace Domain.Entities
 {
@@ -13,7 +12,7 @@ namespace Domain.Entities
         public string UserId { get; set; }
         public virtual User User { get; set; }
 
-        public RateType Rate { get; set; }
+        public int Rate { get; set; }
 
         public string Message { get; set; }
 

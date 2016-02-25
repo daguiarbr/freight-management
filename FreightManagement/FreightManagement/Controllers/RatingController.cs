@@ -1,42 +1,48 @@
 ﻿using Application.Interfaces.Services;
 using AutoMapper;
+using Domain.Entities;
+using FreightManagement.ViewModels;
 using System.Web.Mvc;
 
 namespace FreightManagement.Controllers
 {
+    [Authorize]
     public class RatingController : Controller
     {
-        private readonly IAppCarrierService _appCarrierService;
-        private readonly IAppRatingService _appRatingService;
+        private readonly IAppRatingService _appRating;
+        private readonly IAppCarrierService _appCarrier;
         private readonly IMapper _mapper;
 
-        public RatingController(IAppCarrierService appCarrierService, IAppRatingService appRatingService, IMapper mapper)
+        public RatingController(IAppRatingService appRating, IAppCarrierService appCarrier, IMapper mapper)
         {
-            _appCarrierService = appCarrierService;
-            _appRatingService = appRatingService;
+            _appRating = appRating;
+            _appCarrier = appCarrier;
             _mapper = mapper;
         }
 
-        // GET: Rating
+        [Route("Encontrar-Classificação", Name = "RatingIndex")]
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: Rating/Details/5
+        [Route("{Classificação}/{id:int}", Name = "RatingDetails")]
         public ActionResult Details(int id)
         {
-            return View();
+            var carrier = _appRating.GetById(id);
+            var carrierViewModel = Mapper.Map<Rating, RatingViewModel>(carrier);
+
+            return View(carrierViewModel);
         }
 
-        // GET: Rating/Create
+        [Route("Cadastrar-Classificação", Name = "RatingCreate")]
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Rating/Create
         [HttpPost]
+        [Route("Cadastrar-Classificação", Name = "PostRatingCreate")]
         public ActionResult Create(FormCollection collection)
         {
             try
@@ -51,14 +57,14 @@ namespace FreightManagement.Controllers
             }
         }
 
-        // GET: Rating/Edit/5
+        [Route("Editar-Classificação", Name = "RatingEdit")]
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Rating/Edit/5
         [HttpPost]
+        [Route("Editar-Classificação", Name = "PostRatingEdit")]
         public ActionResult Edit(int id, FormCollection collection)
         {
             try
@@ -73,14 +79,14 @@ namespace FreightManagement.Controllers
             }
         }
 
-        // GET: Rating/Delete/5
+        [Route("Remover-Classificação", Name = "RatingDelete")]
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Rating/Delete/5
         [HttpPost]
+        [Route("Remover-Classificação", Name = "PostRatingDelete")]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try

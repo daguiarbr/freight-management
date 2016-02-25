@@ -1,4 +1,4 @@
-﻿using Domain.Enums;
+﻿using FreightManagement.Enums;
 using System;
 using System.ComponentModel.DataAnnotations;
 

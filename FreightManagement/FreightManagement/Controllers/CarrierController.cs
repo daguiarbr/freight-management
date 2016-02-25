@@ -1,98 +1,106 @@
 ﻿using Application.Interfaces.Services;
 using AutoMapper;
+using Domain.Entities;
+using FreightManagement.ViewModels;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace FreightManagement.Controllers
 {
+    [Authorize]
     public class CarrierController : Controller
     {
-        private readonly IAppCarrierService _appCarrierService;
-        private readonly IAppCarrierPhoneNumberService _appCarrierPhoneNumberService;
+        private readonly IAppCarrierService _appCarrier;
+        private readonly IAppCarrierPhoneNumberService _appCarrierPhoneNumber;
         private readonly IMapper _mapper;
 
-        public CarrierController(IAppCarrierService appCarrierService, IAppCarrierPhoneNumberService appCarrierPhoneNumberService, IMapper mapper)
+        public CarrierController(IAppCarrierService appCarrier, IAppCarrierPhoneNumberService appCarrierPhoneNumber, IMapper mapper)
         {
-            _appCarrierService = appCarrierService;
-            _appCarrierPhoneNumberService = appCarrierPhoneNumberService;
+            _appCarrier = appCarrier;
+            _appCarrierPhoneNumber = appCarrierPhoneNumber;
             _mapper = mapper;
         }
 
-        // GET: Carrier
+        [Route("Encontrar-Transportadora", Name = "CarrierIndex")]
         public ActionResult Index()
         {
-            return View();
+            var carrierViewModel = _mapper.Map<IEnumerable<Carrier>, IEnumerable<CarrierViewModel>>(_appCarrier.GetAll());
+            return View(carrierViewModel);
         }
 
-        // GET: Carrier/Details/5
+        [Route("Transportadora", Name = "CarrierDetails")]
         public ActionResult Details(int id)
         {
-            return View();
+            var carrier = _appCarrier.GetById(id);
+            var carrierViewModel = _mapper.Map<Carrier, CarrierViewModel>(carrier);
+
+            return View(carrierViewModel);
         }
 
-        // GET: Carrier/Create
+        [Route("Cadastrar-Transportadora", Name = "CarrierCreate")]
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Carrier/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        [Route("Cadastrar-Transportadora", Name = "PostCarrierCreate")]
+        public ActionResult Create(CarrierViewModel carrier)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                var carrierDomain = _mapper.Map<CarrierViewModel, Carrier>(carrier);
+                _appCarrier.Add(carrierDomain);
 
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(carrier);
         }
 
-        // GET: Carrier/Edit/5
+        [Route("Editar-Transportadora", Name = "CarrierEdit")]
         public ActionResult Edit(int id)
         {
-            return View();
+            var carrier = _appCarrier.GetById(id);
+            var carrierViewModel = _mapper.Map<Carrier, CarrierViewModel>(carrier);
+            return View(carrierViewModel);
         }
 
-        // POST: Carrier/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        [Route("Editar-Transportadora", Name = "PostCarrierEdit")]
+        public ActionResult Edit(int id, CarrierViewModel carrier)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
+                var carrierDomain = _mapper.Map<CarrierViewModel, Carrier>(carrier);
+                _appCarrier.Update(carrierDomain);
 
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(carrier);
         }
 
-        // GET: Carrier/Delete/5
+        [Route("Remover-Transportadora", Name = "CarrierDelete")]
         public ActionResult Delete(int id)
         {
-            return View();
+            var carrier = _appCarrier.GetById(id);
+            var carrierViewModel = _mapper.Map<Carrier, CarrierViewModel>(carrier);
+
+            return View(carrierViewModel);
         }
 
-        // POST: Carrier/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        [Route("Remover-Transportadora", Name = "PostCarrierDelete")]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            var carrier = _appCarrier.GetById(id);
+            _appCarrier.Remove(carrier);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
     }
 }

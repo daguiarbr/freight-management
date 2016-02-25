@@ -47,9 +47,6 @@
     <Compile Include="Entities\UserClaim.cs" />
     <Compile Include="Entities\UserLogin.cs" />
     <Compile Include="Entities\UserRole.cs" />
-    <Compile Include="Enums\PersonType.cs" />
-    <Compile Include="Enums\RateType.cs" />
-    <Compile Include="Enums\PhoneType.cs" />
     <Compile Include="Interfaces\Repositories\ICarrierPhoneNumberRepository.cs" />
     <Compile Include="Interfaces\Repositories\IRatingRepository.cs" />
     <Compile Include="Interfaces\Repositories\ICarrierRepository.cs" />

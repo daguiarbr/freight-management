@@ -1,4 +1,4 @@
-﻿namespace Domain.Enums
+﻿namespace FreightManagement.Enums
 {
     public enum PhoneType
     {
