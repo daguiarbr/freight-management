@@ -19,5 +19,10 @@ namespace Application.Services
         {
             return _carrierService.GetByFilter(companyName, cnpj);
         }
+
+        public IEnumerable<Carrier> GetAllWithoutRating(string userId)
+        {
+            return _carrierService.GetAllWithoutRating(userId);
+        }
     }
 }

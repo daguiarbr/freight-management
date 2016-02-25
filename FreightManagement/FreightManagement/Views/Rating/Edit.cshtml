@@ -1,12 +1,11 @@
 ﻿@model FreightManagement.ViewModels.RatingViewModel
 @{
-    ViewBag.Title = "Editar Classificação";
+    ViewBag.Title = "Modificar Classificação";
 }
 
 <div class="box box-primary">
     <div class="box-header with-border">
         <h3 class="box-title">@ViewBag.Title:</h3>
-        <h3>@Html.DisplayFor(model => model.Carrier.CompanyName)</h3>
     </div>
 
     @Html.Partial("_FormPartial")
@@ -14,4 +13,10 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $("#CarrierId").attr('disabled', 'disabled');
+        });
+    </script>
+
 }

@@ -6,5 +6,7 @@ namespace Domain.Interfaces.Services
     public interface ICarrierService : IServiceBase<Carrier>
     {
         IEnumerable<Carrier> GetByFilter(string companyName, string cnpj);
+
+        IEnumerable<Carrier> GetAllWithoutRating(string userId);
     }
 }

@@ -23,5 +23,19 @@ namespace Data.Repositories
 
             return Db.Carriers.AsExpandable().Where(condition);
         }
+
+
+        public IEnumerable<Carrier> GetAllWithoutRating(string userId)
+        {
+            var userRatings = (from tbRatings in Db.Ratings
+                               where tbRatings.UserId.ToLower().Equals(userId.ToLower())
+                               select tbRatings.CarrierId);
+
+            var result = (from tbCarriers in Db.Carriers
+                          where !userRatings.Contains(tbCarriers.Id)
+                          select tbCarriers);
+
+            return result;
+        }
     }
 }

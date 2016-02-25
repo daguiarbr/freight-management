@@ -19,5 +19,10 @@ namespace Domain.Services
         {
             return _carrierRepository.GetByFilter(companyName, cnpj);
         }
+
+        public IEnumerable<Carrier> GetAllWithoutRating(string userId)
+        {
+            return _carrierRepository.GetAllWithoutRating(userId);
+        }
     }
 }

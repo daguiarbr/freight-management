@@ -6,7 +6,7 @@ namespace FreightManagement.Enums
     {
         [Display(Name = @"Ruim ou Péssima")]
         Negative = 0,
-        [Display(Name = @"Não tenho certeza")]
+        [Display(Name = @"Neutra ou Imparcial")]
         Impartial = 1,
         [Display(Name = @"Boa ou Ótima")]
         Positive = 2,

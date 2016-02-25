@@ -6,5 +6,7 @@ namespace Domain.Interfaces.Repositories
     public interface ICarrierRepository : IRepositoryBase<Carrier>
     {
         IEnumerable<Carrier> GetByFilter(string companyName, string cnpj);
+
+        IEnumerable<Carrier> GetAllWithoutRating(string userId);
     }
 }

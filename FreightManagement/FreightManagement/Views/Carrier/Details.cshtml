@@ -89,6 +89,17 @@
                 </div>
             </div>
         </div>
+
+        @if (Model.Ratings.Any())
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <strong class="text-warning">
+                        <span class="glyphicon glyphicon-star-empty"></span> Total de Classificações: @Model.Ratings.Count()
+                    </strong>
+                </div>
+            </div>
+        }
     </div>
 
     <div class="box-footer"></div>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Linq;
 using Application.Interfaces.Services;
 using AutoMapper;
 using Domain.Entities;
@@ -35,19 +36,18 @@ namespace FreightManagement.Controllers
             return View(ratingViewModel);
         }
 
-        [Route("Classificacao", Name = "RatingDetails")]
-        public ActionResult Details(int id)
-        {
-            var rating = _appRating.GetById(id);
-            var ratingViewModel = _mapper.Map<Rating, RatingViewModel>(rating);
-            return View(ratingViewModel);
-        }
-
         [Route("Cadastrar-Classificacao", Name = "RatingCreate")]
         public ActionResult Create()
         {
-            ViewBag.CarrierId = new SelectList(_appCarrier.GetAll(), "Id", "CompanyName");
-            var user = _appUser.GetByStringId(User.Identity.GetUserId());
+            var userId = User.Identity.GetUserId();
+            var carrierWithoutRating = _appCarrier.GetAllWithoutRating(userId).ToList();
+            if (!carrierWithoutRating.Any())
+            {
+                return Redirect("/Classificacoes-Finalizadas");
+            }
+
+            ViewBag.CarrierId = new SelectList(carrierWithoutRating, "Id", "CompanyName");
+            var user = _appUser.GetByStringId(userId);
             var userViewModel = _mapper.Map<User, UserViewModel>(user);
 
             var ratingViewModel = new RatingViewModel { UserId = userViewModel.UserId, User = userViewModel };
@@ -119,6 +119,12 @@ namespace FreightManagement.Controllers
 
             TempData["msg"] = "Registro excluído o registro.";
             return RedirectToAction("Index");
+        }
+
+        [Route("Classificacoes-Finalizadas", Name = "RatingFinished")]
+        public ActionResult RatingFinished()
+        {
+            return View();
         }
 
         [ChildActionOnly]
