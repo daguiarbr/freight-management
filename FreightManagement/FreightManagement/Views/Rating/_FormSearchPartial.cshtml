@@ -1,0 +1,25 @@
+﻿@model FreightManagement.ViewModels.RatingSearchViewModel
+
+@using (Html.BeginRouteForm("RatingIndex", new { controller = "Rating", action = "Index" }, FormMethod.Get))
+{
+    <div class=" col-md-3">
+        <div class="form-group-sm">
+            <label class="control-label">Razão Social</label>
+            @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group-sm">
+            <label class="control-label">Classificação</label>
+            @Html.EnumDropDownListFor(model => model.RateType, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="form-group-sm">
+            <button style="margin-top: 24px;" type="submit" class="btn btn-search">Pesquisar</button>
+            <a href="/Encontrar-Classificacao" style="margin-top: 24px;" class="btn btn-default">Limpar</a>
+        </div>
+    </div>
+}

@@ -1,10 +1,13 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
-namespace Domain.Entities
+namespace FreightManagement.ViewModels
 {
-    public class User
+    public class UserViewModel
     {
+        [Key]
+        [Display(Name = "Código:")]
         public string UserId { get; set; }
 
         public string Email { get; set; }
@@ -31,12 +34,12 @@ namespace Domain.Entities
 
         public string Discriminator { get; set; }
 
-        public virtual ICollection<Rating> Ratings { get; set; }
+        public virtual ICollection<RatingViewModel> Ratings { get; set; }
 
-        public virtual ICollection<UserClaim> UserClaims { get; set; }
+        public virtual ICollection<UserClaimViewModel> UserClaims { get; set; }
 
-        public virtual ICollection<UserLogin> UserLogins { get; set; }
+        public virtual ICollection<UserLoginViewModel> UserLogins { get; set; }
 
-        public virtual ICollection<UserRole> UserRoles { get; set; }
+        public virtual ICollection<UserRoleViewModel> UserRoles { get; set; }
     }
 }

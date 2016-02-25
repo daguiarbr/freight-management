@@ -12,7 +12,7 @@ namespace Domain.Entities
         public string UserId { get; set; }
         public virtual User User { get; set; }
 
-        public int Rate { get; set; }
+        public int RateType { get; set; }
 
         public string Message { get; set; }
 

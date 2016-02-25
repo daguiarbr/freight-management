@@ -1,0 +1,64 @@
+﻿@model FreightManagement.ViewModels.RatingViewModel
+
+@using (Html.BeginForm())
+{
+    if (Model != null)
+    {
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.UserId)
+    }
+
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="box-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group-sm">
+                    @Html.LabelFor(model => model.CarrierId, new { @class = "control-label" })
+                    @Html.DropDownList("CarrierId", String.Empty)
+                    @Html.ValidationMessageFor(model => model.CarrierId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group-sm">
+                    <label class="control-label">
+                        Como você classifica esta transportadora?
+                    </label>
+                    @Html.EnumDropDownListFor(model => model.RateType, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.RateType, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group-sm">
+                    <label class="control-label">
+                        Divida a sua opinião sobre esta transportadora
+                    </label>
+                    @Html.TextAreaFor(model => model.Message, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="box-footer">
+        <div class="row">
+            <div class="col-md-5">
+                <a href="/Encontrar-Transportadora" class="btn btn-default">Voltar para listagem</a>
+            </div>
+
+            <div class="col-md-5">
+                <input type="submit" value="Salvar" class="btn btn-save" />
+            </div>
+        </div>
+
+    </div>
+}

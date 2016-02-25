@@ -17,7 +17,7 @@ namespace Data.EntityConfig
             Property(t => t.UserId)
                 .HasMaxLength(128);
 
-            Property(t => t.Rate)
+            Property(t => t.RateType)
                 .IsRequired();
 
             Property(t => t.Message)

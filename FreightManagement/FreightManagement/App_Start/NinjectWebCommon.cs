@@ -81,15 +81,19 @@ namespace FreightManagement
             kernel.Bind<IAppCarrierService>().To<AppCarrierService>();
             kernel.Bind<IAppCarrierPhoneNumberService>().To<AppCarrierPhoneNumberService>();
             kernel.Bind<IAppRatingService>().To<AppRatingService>();
+            kernel.Bind<IAppUserService>().To<AppUserService>();
 
             kernel.Bind(typeof(IServiceBase<>)).To(typeof(ServiceBase<>));
             kernel.Bind<ICarrierService>().To<CarrierService>();
             kernel.Bind<ICarrierPhoneNumberService>().To<CarrierPhoneNumberService>();
+            kernel.Bind<IRatingService>().To<RatingService>();
+            kernel.Bind<IUserService>().To<UserService>();
 
             kernel.Bind(typeof(IRepositoryBase<>)).To(typeof(RepositoryBase<>));
             kernel.Bind<ICarrierRepository>().To<CarrierRepository>();
             kernel.Bind<ICarrierPhoneNumberRepository>().To<CarrierPhoneNumberRepository>();
             kernel.Bind<IRatingRepository>().To<RatingRepository>();
+            kernel.Bind<IUserRepository>().To<UserRepository>();
         }        
     }
 }

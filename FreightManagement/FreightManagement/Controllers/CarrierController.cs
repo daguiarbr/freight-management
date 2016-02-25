@@ -22,7 +22,7 @@ namespace FreightManagement.Controllers
         [Route("Encontrar-Transportadora", Name = "CarrierIndex")]
         public ActionResult Index(CarrierSearchViewModel filters)
         {
-            var carrierViewModel = _mapper.Map<IEnumerable<Carrier>, IEnumerable<CarrierViewModel>>(_appCarrier.Search(filters.CompanyName, filters.Cnpj));
+            var carrierViewModel = _mapper.Map<IEnumerable<Carrier>, IEnumerable<CarrierViewModel>>(_appCarrier.GetByFilter(filters.CompanyName, filters.Cnpj));
             return View(carrierViewModel);
         }
 
@@ -51,9 +51,11 @@ namespace FreightManagement.Controllers
                 var carrierDomain = _mapper.Map<CarrierViewModel, Carrier>(carrier);
                 _appCarrier.Add(carrierDomain);
 
+                TempData["msg"] = "Registro inserido com sucesso.";
                 return RedirectToAction("Index");
             }
 
+            TempData["error"] = "Falha ao inserir o registro.";
             return View(carrier);
         }
 
@@ -75,9 +77,11 @@ namespace FreightManagement.Controllers
                 var carrierDomain = _mapper.Map<CarrierViewModel, Carrier>(carrier);
                 _appCarrier.Update(carrierDomain);
 
+                TempData["msg"] = "Registro alterado com sucesso.";
                 return RedirectToAction("Index");
             }
 
+            TempData["error"] = "Falha ao alterar o registro.";
             return View(carrier);
         }
 
@@ -98,11 +102,12 @@ namespace FreightManagement.Controllers
             var carrier = _appCarrier.GetById(id);
             _appCarrier.Remove(carrier);
 
+            TempData["msg"] = "Registro excluído o registro.";
             return RedirectToAction("Index");
         }
 
         [ChildActionOnly]
-        public PartialViewResult GetSearchForm()
+        public PartialViewResult GetFormSearch()
         {
             var vm = new CarrierSearchViewModel
             {
@@ -110,7 +115,7 @@ namespace FreightManagement.Controllers
                 Cnpj = Request.Params["Cnpj"]
             };
 
-            return PartialView("_SearchFormPartial", vm);
+            return PartialView("_FormSearchPartial", vm);
         }
     }
 }

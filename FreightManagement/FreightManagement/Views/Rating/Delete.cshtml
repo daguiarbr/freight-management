@@ -1,0 +1,57 @@
+﻿@model FreightManagement.ViewModels.RatingViewModel
+
+@{
+    ViewBag.Title = "Remover Classificação";
+}
+
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title">Tem certeza de que deseja remover esta classificação?</h3>
+    </div>
+
+    <div class="box-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group-sm">
+                    @Html.LabelFor(model => model.Carrier.CompanyName, new { @class = "control-label" })
+                    @Html.DisplayFor(model => model.Carrier.CompanyName)
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group-sm">
+                    @Html.LabelFor(model => model.RateType, new { @class = "control-label" })
+                    @Html.DisplayFor(model => model.RateType)
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group-sm">
+                    @Html.LabelFor(model => model.Message, new { @class = "control-label" })
+                    @Html.DisplayFor(model => model.Message)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box-footer">
+        <div class="row">
+            <div class="col-md-6">
+                <a href="/Encontrar-Classificacao" class="btn btn-default">Voltar para listagem</a>
+            </div>
+
+            <div class="col-md-6">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="Remover" class="btn btn-save pull-right" />
+                }
+            </div>
+        </div>
+
+    </div>
+</div>

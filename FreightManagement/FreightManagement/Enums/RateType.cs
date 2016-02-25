@@ -1,9 +1,14 @@
-﻿namespace FreightManagement.Enums
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FreightManagement.Enums
 {
     public enum RateType
     {
-        Negative = 0, //Negativo
-        Impartial = 1, //Imparcial ou Neutro
-        Positive = 2, //Positivo
+        [Display(Name = @"Negativa")]
+        Negative = 0,
+        [Display(Name = @"Neutra")]
+        Impartial = 1,
+        [Display(Name = @"Positiva")]
+        Positive = 2,
     }
 }

@@ -61,42 +61,17 @@
     <Compile Include="EntityConfig\UserConfiguration.cs" />
     <Compile Include="EntityConfig\UserLoginConfiguration.cs" />
     <Compile Include="EntityConfig\UserRoleConfiguration.cs" />
-    <Compile Include="Migrations\201602242141589_initial-database.cs" />
-    <Compile Include="Migrations\201602242141589_initial-database.Designer.cs">
-      <DependentUpon>201602242141589_initial-database.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602250157245_initial-database2.cs" />
-    <Compile Include="Migrations\201602250157245_initial-database2.Designer.cs">
-      <DependentUpon>201602250157245_initial-database2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602250216049_initial-database3.cs" />
-    <Compile Include="Migrations\201602250216049_initial-database3.Designer.cs">
-      <DependentUpon>201602250216049_initial-database3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602250303589_initial-database4.cs" />
-    <Compile Include="Migrations\201602250303589_initial-database4.Designer.cs">
-      <DependentUpon>201602250303589_initial-database4.cs</DependentUpon>
+    <Compile Include="Migrations\201602251025594_initial-database.cs" />
+    <Compile Include="Migrations\201602251025594_initial-database.Designer.cs">
+      <DependentUpon>201602251025594_initial-database.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Repositories\CarrierPhoneNumberRepository.cs" />
     <Compile Include="Repositories\CarrierRepository.cs" />
     <Compile Include="Repositories\RatingRepository.cs" />
     <Compile Include="Repositories\RespositoryBase.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201602242141589_initial-database.resx">
-      <DependentUpon>201602242141589_initial-database.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602250157245_initial-database2.resx">
-      <DependentUpon>201602250157245_initial-database2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602250216049_initial-database3.resx">
-      <DependentUpon>201602250216049_initial-database3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602250303589_initial-database4.resx">
-      <DependentUpon>201602250303589_initial-database4.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -107,6 +82,11 @@
       <Project>{09c28a8c-5135-4792-b960-c3947b71d0a9}</Project>
       <Name>Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201602251025594_initial-database.resx">
+      <DependentUpon>201602251025594_initial-database.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

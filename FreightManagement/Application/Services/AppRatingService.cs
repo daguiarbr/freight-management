@@ -1,4 +1,5 @@
-﻿using Application.Interfaces.Services;
+﻿using System.Collections.Generic;
+using Application.Interfaces.Services;
 using Domain.Entities;
 using Domain.Interfaces.Services;
 
@@ -12,6 +13,11 @@ namespace Application.Services
             : base(ratingService)
         {
             _ratingService = ratingService;
+        }
+
+        public IEnumerable<Rating> GetByFilter(string companyName, int rate)
+        {
+            return _ratingService.GetByFilter(companyName, rate);
         }
     }
 }

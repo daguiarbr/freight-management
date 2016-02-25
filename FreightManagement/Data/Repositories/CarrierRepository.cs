@@ -8,7 +8,7 @@ namespace Data.Repositories
 {
     public class CarrierRepository : RepositoryBase<Carrier>, ICarrierRepository
     {
-        public IEnumerable<Carrier> Search(string companyName, string cnpj)
+        public IEnumerable<Carrier> GetByFilter(string companyName, string cnpj)
         {
             var condition = PredicateBuilder.True<Carrier>();
             if (!string.IsNullOrEmpty(companyName))

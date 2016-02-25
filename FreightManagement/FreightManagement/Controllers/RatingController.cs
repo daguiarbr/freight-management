@@ -1,8 +1,12 @@
-﻿using Application.Interfaces.Services;
+﻿using System;
+using Application.Interfaces.Services;
 using AutoMapper;
 using Domain.Entities;
+using FreightManagement.Enums;
 using FreightManagement.ViewModels;
+using System.Collections.Generic;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace FreightManagement.Controllers
 {
@@ -11,94 +15,122 @@ namespace FreightManagement.Controllers
     {
         private readonly IAppRatingService _appRating;
         private readonly IAppCarrierService _appCarrier;
+        private readonly IAppUserService _appUser;
         private readonly IMapper _mapper;
 
-        public RatingController(IAppRatingService appRating, IAppCarrierService appCarrier, IMapper mapper)
+        public RatingController(IAppRatingService appRating, IAppCarrierService appCarrier, IAppUserService appUser, IMapper mapper)
         {
             _appRating = appRating;
             _appCarrier = appCarrier;
+            _appUser = appUser;
             _mapper = mapper;
         }
 
-        [Route("Encontrar-Classificação", Name = "RatingIndex")]
-        public ActionResult Index()
+        [Route("Encontrar-Classificacao", Name = "RatingIndex")]
+        public ActionResult Index(RatingSearchViewModel filters)
         {
-            return View();
+            var rate = Convert.ToInt32(filters.RateType);
+            var ratingViewModel = _mapper.Map<IEnumerable<Rating>, IEnumerable<RatingViewModel>>(_appRating.GetByFilter(filters.CompanyName, rate));
+            return View(ratingViewModel);
         }
 
-        [Route("{Classificação}/{id:int}", Name = "RatingDetails")]
+        [Route("Classificacao", Name = "RatingDetails")]
         public ActionResult Details(int id)
         {
-            var carrier = _appRating.GetById(id);
-            var carrierViewModel = Mapper.Map<Rating, RatingViewModel>(carrier);
-
-            return View(carrierViewModel);
+            var rating = _appRating.GetById(id);
+            var ratingViewModel = _mapper.Map<Rating, RatingViewModel>(rating);
+            return View(ratingViewModel);
         }
 
-        [Route("Cadastrar-Classificação", Name = "RatingCreate")]
+        [Route("Cadastrar-Classificacao", Name = "RatingCreate")]
         public ActionResult Create()
         {
-            return View();
+            ViewBag.CarrierId = new SelectList(_appCarrier.GetAll(), "Id", "CompanyName"); //recuperar todos menos o que eu ja avaliei
+            var user = _appUser.GetByStringId(User.Identity.GetUserId());
+            var userViewModel = _mapper.Map<User, UserViewModel>(user);
+
+            var ratingViewModel = new RatingViewModel { UserId = userViewModel.UserId, User = userViewModel };
+            return View(ratingViewModel);
         }
 
         [HttpPost]
-        [Route("Cadastrar-Classificação", Name = "PostRatingCreate")]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        [Route("Cadastrar-Classificacao", Name = "PostRatingCreate")]
+        public ActionResult Create(RatingViewModel rating)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                var ratingDomain = _mapper.Map<RatingViewModel, Rating>(rating);
+                _appRating.Add(ratingDomain);
 
+                TempData["msg"] = "Registro inserido com sucesso.";
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            TempData["error"] = "Falha ao inserir o registro.";
+            ViewBag.CarrierId = new SelectList(_appCarrier.GetAll(), "Id", "CompanyName", rating.CarrierId);
+            return View(rating);
         }
 
-        [Route("Editar-Classificação", Name = "RatingEdit")]
+        [Route("Editar-Classificacao", Name = "RatingEdit")]
         public ActionResult Edit(int id)
         {
-            return View();
+            var rating = _appRating.GetById(id);
+            var ratingViewModel = _mapper.Map<Rating, RatingViewModel>(rating);
+            ViewBag.CarrierId = new SelectList(_appCarrier.GetAll(), "Id", "CompanyName", rating.CarrierId);
+            return View(ratingViewModel);
         }
 
         [HttpPost]
-        [Route("Editar-Classificação", Name = "PostRatingEdit")]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        [Route("Editar-Classificacao", Name = "PostRatingEdit")]
+        public ActionResult Edit(int id, RatingViewModel rating)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
+                var ratingDomain = _mapper.Map<RatingViewModel, Rating>(rating);
+                _appRating.Update(ratingDomain);
 
+                TempData["msg"] = "Registro alterado com sucesso.";
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            TempData["error"] = "Falha ao alterar o registro.";
+            ViewBag.CarrierId = new SelectList(_appCarrier.GetAll(), "Id", "CompanyName", rating.CarrierId);
+            return View(rating);
         }
 
-        [Route("Remover-Classificação", Name = "RatingDelete")]
+        [Route("Remover-Classificacao", Name = "RatingDelete")]
         public ActionResult Delete(int id)
         {
-            return View();
+            var rating = _appRating.GetById(id);
+            var ratingViewModel = _mapper.Map<Rating, RatingViewModel>(rating);
+            return View(ratingViewModel);
         }
 
-        [HttpPost]
-        [Route("Remover-Classificação", Name = "PostRatingDelete")]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        [Route("Remover-Classificacao", Name = "PostRatingDelete")]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            var rating = _appRating.GetById(id);
+            _appRating.Remove(rating);
 
-                return RedirectToAction("Index");
-            }
-            catch
+            TempData["msg"] = "Registro excluído o registro.";
+            return RedirectToAction("Index");
+        }
+
+        [ChildActionOnly]
+        public PartialViewResult GetFormSearch()
+        {
+            var rate = Request.Params["RateType"];
+            var vm = new RatingSearchViewModel
             {
-                return View();
-            }
+                CompanyName = Request.Params["CompanyName"],
+                RateType = (rate == null) ? RateType.Negative : (RateType)Enum.ToObject(typeof(RateType), rate)
+            };
+
+            return PartialView("_FormSearchPartial", vm);
         }
     }
 }

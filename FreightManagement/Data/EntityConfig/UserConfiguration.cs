@@ -22,12 +22,6 @@ namespace Data.EntityConfig
                 .IsRequired()
                 .HasMaxLength(256);
 
-            Property(t => t.Name)
-                .HasMaxLength(120);
-
-            Property(t => t.DocumentNumber)
-                .HasMaxLength(14);
-
             Property(t => t.Discriminator)
                 .IsRequired()
                 .HasMaxLength(128);

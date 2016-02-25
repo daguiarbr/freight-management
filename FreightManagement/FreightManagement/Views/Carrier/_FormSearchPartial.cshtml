@@ -4,14 +4,14 @@
 {
     <div class=" col-md-3">
         <div class="form-group-sm">
-            <label class="control-label" for="CompanyName">Razão Social</label>
+            <label class="control-label">Razão Social</label>
             @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
         </div>
     </div>
 
     <div class="col-md-3">
         <div class="form-group-sm">
-            <label class="control-label" for="Cnpj">CNPJ</label>
+            <label class="control-label">CNPJ</label>
             @Html.EditorFor(model => model.Cnpj, new { htmlAttributes = new { @class = "form-control", @mask = "99.999.999/9999-99", @autocomplete = "off" } })
         </div>
     </div>

@@ -26,18 +26,17 @@ namespace Data.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        PersonType = c.Int(nullable: false),
                         CompanyName = c.String(nullable: false, maxLength: 150, unicode: false),
                         TradingName = c.String(nullable: false, maxLength: 120, unicode: false),
-                        CpfCnpj = c.String(nullable: false, maxLength: 14, unicode: false),
-                        RgIe = c.String(maxLength: 12, unicode: false),
+                        Cnpj = c.String(nullable: false, maxLength: 18, unicode: false),
+                        Ie = c.String(maxLength: 20, unicode: false),
                         Email = c.String(maxLength: 256, unicode: false),
                         Address = c.String(nullable: false, maxLength: 150, unicode: false),
                         Number = c.String(nullable: false, maxLength: 10, unicode: false),
                         Complement = c.String(maxLength: 20, unicode: false),
                         Neighborhood = c.String(nullable: false, maxLength: 80, unicode: false),
-                        Cep = c.String(nullable: false, maxLength: 8, unicode: false),
-                        State = c.String(maxLength: 2, fixedLength: true, unicode: false),
+                        Cep = c.String(nullable: false, maxLength: 9, unicode: false),
+                        State = c.Int(nullable: false),
                         City = c.String(maxLength: 100, unicode: false),
                         CreateDate = c.DateTime(nullable: false),
                     })
@@ -50,7 +49,7 @@ namespace Data.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         CarrierId = c.Int(nullable: false),
                         UserId = c.String(nullable: false, maxLength: 128, unicode: false),
-                        Rate = c.Int(nullable: false),
+                        RateType = c.Int(nullable: false),
                         Message = c.String(maxLength: 256, unicode: false),
                         CreateDate = c.DateTime(nullable: false),
                     })
@@ -76,13 +75,6 @@ namespace Data.Migrations
                         LockoutEnabled = c.Boolean(nullable: false),
                         AccessFailedCount = c.Int(nullable: false),
                         UserName = c.String(nullable: false, maxLength: 256, unicode: false),
-                        HastaId = c.String(maxLength: 120, unicode: false),
-                        Name = c.String(maxLength: 120, unicode: false),
-                        DocumentNumber = c.String(maxLength: 14, unicode: false),
-                        Vip = c.Boolean(nullable: false),
-                        VipMessage = c.String(maxLength: 120, unicode: false),
-                        UpdateDate = c.DateTime(),
-                        CreateDate = c.DateTime(),
                         Discriminator = c.String(nullable: false, maxLength: 128, unicode: false),
                     })
                 .PrimaryKey(t => t.UserId);

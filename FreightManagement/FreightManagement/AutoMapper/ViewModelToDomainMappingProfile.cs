@@ -12,6 +12,7 @@ namespace FreightManagement.AutoMapper
             CreateMap<Carrier, CarrierViewModel>();
             CreateMap<CarrierPhoneNumber, CarrierPhoneNumberViewModel>();
             CreateMap<Rating, RatingViewModel>();
+            CreateMap<User, UserViewModel>();
         }
     }
 }

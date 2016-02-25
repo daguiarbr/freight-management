@@ -183,10 +183,10 @@
     <Compile Include="AutoMapper\DomainToViewModelMappingProfile.cs" />
     <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="Controllers\CarrierPhoneNumberController.cs" />
     <Compile Include="Controllers\CarrierController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="Enums\BrazilianStates.cs" />
     <Compile Include="Enums\PhoneType.cs" />
     <Compile Include="Enums\RateType.cs" />
@@ -195,6 +195,7 @@
     </Compile>
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="ViewModels\RatingSearchViewModel.cs" />
     <Compile Include="ViewModels\CarrierSearchViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -202,6 +203,11 @@
     <Compile Include="ViewModels\CarrierPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\CarrierViewModel.cs" />
     <Compile Include="ViewModels\RatingViewModel.cs" />
+    <Compile Include="ViewModels\RoleViewModel.cs" />
+    <Compile Include="ViewModels\UserClaimViewModel.cs" />
+    <Compile Include="ViewModels\UserLoginViewModel.cs" />
+    <Compile Include="ViewModels\UserRoleViewModel.cs" />
+    <Compile Include="ViewModels\UserViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -243,6 +249,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\site.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -270,11 +277,16 @@
     <Content Include="Views\CarrierPhoneNumber\Create.cshtml" />
     <Content Include="Views\CarrierPhoneNumber\Delete.cshtml" />
     <Content Include="Views\CarrierPhoneNumber\Edit.cshtml" />
-    <None Include="Views\Carrier\_SearchFormPartial.cshtml" />
+    <None Include="Views\Carrier\_FormSearchPartial.cshtml" />
+    <Content Include="Views\Rating\_FormPartial.cshtml" />
+    <Content Include="Views\Rating\Create.cshtml" />
+    <Content Include="Views\Rating\Delete.cshtml" />
+    <Content Include="Views\Rating\Edit.cshtml" />
+    <Content Include="Views\Rating\Index.cshtml" />
+    <Content Include="Views\Rating\_FormSearchPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Rating\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

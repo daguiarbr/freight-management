@@ -1,17 +1,17 @@
-﻿@model IEnumerable<FreightManagement.ViewModels.CarrierViewModel>
+﻿@model IEnumerable<FreightManagement.ViewModels.RatingViewModel>
 
 @{
-    ViewBag.Title = "Listagem de Transportadoras";
+    ViewBag.Title = "Listagem de Classificações";
 }
 <div class="box box-primary">
     <div class="box-header with-border">
         <h3 class="box-title">@ViewBag.Title:</h3>
-        <a href="/Cadastrar-Transportadora" clas class="btn btn-sm btn-save pull-right">Cadastrar Novo</a>
+        <a href="/Cadastrar-Classificacao" clas class="btn btn-sm btn-save pull-right">Cadastrar Nova</a>
     </div>
 
     <div class="box-header">
         <div class="row">
-            @Html.Action("GetFormSearch", "Carrier")
+            @Html.Action("GetFormSearch", "Rating")
         </div>
     </div>
 
@@ -20,13 +20,10 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.CompanyName)
+                        @Html.DisplayNameFor(model => model.Carrier.CompanyName)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.TradingName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Cnpj)
+                        @Html.DisplayNameFor(model => model.RateType)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.CreateDate)
@@ -39,27 +36,24 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.CompanyName)
+                            @Html.DisplayFor(modelItem => item.Carrier.CompanyName)
                         </td>
                         <td>
-                            @Html.DisplayFor(model => item.TradingName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Cnpj)
+                            @Html.DisplayFor(model => item.RateType)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.CreateDate)
                         </td>
                         <td>
-                            <a href="/Transportadora?id=@item.Id">
+                            <a href="/Classificacao?id=@item.Id">
                                 <img src="/Images/ver-detalhes.png" alt="Ver detalhes" title="Ver detalhes" />
                             </a>
 
-                            <a href="/Editar-Transportadora?id=@item.Id" class="btn-img">
+                            <a href="/Editar-Classificacao?id=@item.Id" class="btn-img">
                                 <img src="/Images/editar.png" alt="Editar" title="Editar" />
                             </a>
 
-                            <a href="/Remover-Transportadora?id=@item.Id" class="btn-img">
+                            <a href="/Remover-Classificacao?id=@item.Id" class="btn-img">
                                 <img src="/Images/remover.png" alt="Remover" title="Remover" />
                             </a>
                         </td>

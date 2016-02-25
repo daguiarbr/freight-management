@@ -15,9 +15,9 @@ namespace Application.Services
             _carrierService = carrierService;
         }
 
-        public IEnumerable<Carrier> Search(string companyName, string cnpj)
+        public IEnumerable<Carrier> GetByFilter(string companyName, string cnpj)
         {
-            return _carrierService.Search(companyName, cnpj);
+            return _carrierService.GetByFilter(companyName, cnpj);
         }
     }
 }

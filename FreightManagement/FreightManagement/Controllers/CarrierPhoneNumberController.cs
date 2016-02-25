@@ -44,9 +44,11 @@ namespace FreightManagement.Controllers
                 var carrierPhoneNumberDomain = _mapper.Map<CarrierPhoneNumberViewModel, CarrierPhoneNumber>(carrierPhoneNumber);
                 _appCarrierPhoneNumber.Add(carrierPhoneNumberDomain);
 
+                TempData["msg"] = "Registro inserido com sucesso.";
                 return Redirect(string.Format("/Transportadora?id={0}", carrierPhoneNumber.CarrierId));
             }
 
+            TempData["error"] = "Falha ao inserir o registro.";
             return View(carrierPhoneNumber);
         }
 
@@ -68,9 +70,11 @@ namespace FreightManagement.Controllers
                 var carrierPhoneNumberDomain = _mapper.Map<CarrierPhoneNumberViewModel, CarrierPhoneNumber>(carrierPhoneNumber);
                 _appCarrierPhoneNumber.Update(carrierPhoneNumberDomain);
 
+                TempData["msg"] = "Registro alterado com sucesso.";
                 return Redirect(string.Format("/Transportadora?id={0}", carrierPhoneNumber.CarrierId));
             }
 
+            TempData["error"] = "Falha ao alterar o registro.";
             return View(carrierPhoneNumber);
         }
 
@@ -91,6 +95,7 @@ namespace FreightManagement.Controllers
             var carrierPhoneNumber = _appCarrierPhoneNumber.GetById(id);
             _appCarrierPhoneNumber.Remove(carrierPhoneNumber);
 
+            TempData["msg"] = "Registro excluído o registro.";
             return Redirect(string.Format("/Transportadora?id={0}", carrierPhoneNumber.CarrierId));
         }
 
