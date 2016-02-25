@@ -226,6 +226,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <None Include="Properties\PublishProfiles\Deploy.pubxml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Images\editar.png" />
     <Content Include="Images\freight-management-logo.png" />
@@ -277,7 +278,6 @@
     <Content Include="Views\CarrierPhoneNumber\Create.cshtml" />
     <Content Include="Views\CarrierPhoneNumber\Delete.cshtml" />
     <Content Include="Views\CarrierPhoneNumber\Edit.cshtml" />
-    <None Include="Views\Carrier\_FormSearchPartial.cshtml" />
     <Content Include="Views\Rating\_FormPartial.cshtml" />
     <Content Include="Views\Rating\Create.cshtml" />
     <Content Include="Views\Rating\Delete.cshtml" />
@@ -286,6 +286,7 @@
     <Content Include="Views\Rating\_FormSearchPartial.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Enum.cshtml" />
     <Content Include="Views\Rating\RatingFinished.cshtml" />
+    <Content Include="Views\Carrier\_FormSearchPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
