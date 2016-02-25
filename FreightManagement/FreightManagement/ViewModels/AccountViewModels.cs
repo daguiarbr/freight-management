@@ -6,7 +6,7 @@ namespace FreightManagement.ViewModels
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
-        [Display(Name = "Email")]
+        [Display(Name = "E-mail:")]
         public string Email { get; set; }
     }
 
@@ -29,7 +29,7 @@ namespace FreightManagement.ViewModels
         public string Provider { get; set; }
 
         [Required]
-        [Display(Name = "Código")]
+        [Display(Name = "Código:")]
         public string Code { get; set; }
         public string ReturnUrl { get; set; }
 
@@ -42,20 +42,20 @@ namespace FreightManagement.ViewModels
     public class ForgotViewModel
     {
         [Required]
-        [Display(Name = "Email")]
+        [Display(Name = "E-mail:")]
         public string Email { get; set; }
     }
 
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
+        [Display(Name = "E-mail:")]
         [EmailAddress]
         public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Senha")]
+        [Display(Name = "Senha:")]
         public string Password { get; set; }
 
         [Display(Name = "Mantenha-me conectado")]
@@ -65,18 +65,18 @@ namespace FreightManagement.ViewModels
     public class RegisterViewModel
     {
         [Required(ErrorMessage = "Campo {0} é obrigatório.")]
-        [Display(Name = "E-mail")]
+        [Display(Name = "E-mail:")]
         [EmailAddress]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Campo {0} é obrigatório.")]
         [StringLength(100, ErrorMessage = "Campo {0} deve ter pelo menos {2} caracteres.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Senha")]
+        [Display(Name = "Senha:")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirmar Senha")]
+        [Display(Name = "Confirmar Senha:")]
         [Compare("Password", ErrorMessage = "Campo Senha e Confirmar Senha não coincidem .")]
         public string ConfirmPassword { get; set; }
     }
@@ -85,17 +85,17 @@ namespace FreightManagement.ViewModels
     {
         [Required]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = "E-mail:")]
         public string Email { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "Campo {0} deve ter pelo menos {2} caracteres.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Senha")]
+        [Display(Name = "Senha:")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirmação de senha")]
+        [Display(Name = "Confirmação de senha:")]
         [Compare("Password", ErrorMessage = "Campo Senha e Confirmar Senha não coincidem .")]
         public string ConfirmPassword { get; set; }
 
@@ -106,7 +106,7 @@ namespace FreightManagement.ViewModels
     {
         [Required]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = "E-mail:")]
         public string Email { get; set; }
     }
 }

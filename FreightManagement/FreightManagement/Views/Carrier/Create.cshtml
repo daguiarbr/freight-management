@@ -4,11 +4,15 @@
     ViewBag.Title = "Cadastrar Transportadora";
 }
 
-<h2>@ViewBag.Title:</h2>
-
-@Html.Partial("_FormPartial")
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/jquerymask")
 }
+
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title">@ViewBag.Title:</h3>
+    </div>
+
+    @Html.Partial("_FormPartial")
+</div>
