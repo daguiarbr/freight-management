@@ -11,8 +11,8 @@ Você precisará do Visual Studio 2013 ou superior e uma conexão com o Sql Serv
 
 1º) Você precisa definir sua string de conexão no arquivo freight-management\FreightManagement\FreightManagement\Web.config
 
-2º) Este projeto utiliza Entity Framework Code First e assim sendo você poderá gerar sua base de dados atrás de migrations. 
-Para isto, abra seu projeto no Visual Studio e em seguida acesse o menu Ferramentas , clique em Biblioteca Package Manager e, em seguida Package Manager Console.
+2º) Este projeto utiliza Entity Framework Code First e assim sendo você poderá gerar sua base de dados através de migrations. 
+Para isto, abra seu projeto no Visual Studio e em seguida acesse o menu "Tools" , clique em "Nuget Package Manager" e, em seguida "Package Manager Console".
 
 Na Opção "Default Project" selecione o projeto "Data" e digite add-migration [NOME-SUA-MIGRATION]
 
